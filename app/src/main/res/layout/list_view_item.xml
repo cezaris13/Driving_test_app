@@ -5,7 +5,7 @@
 
 
     <TextView
-        android:id="@+id/tv_user_name"
+        android:id="@+id/Mistake"
         android:layout_width="367dp"
         android:layout_height="match_parent"
         android:gravity="center_vertical"
@@ -17,7 +17,7 @@
     <ImageView
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:id="@+id/iv_check_box"
+        android:id="@+id/checkbox"
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
         android:layout_centerVertical="true"

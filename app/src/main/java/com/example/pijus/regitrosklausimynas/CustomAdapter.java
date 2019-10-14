@@ -19,9 +19,6 @@ public class CustomAdapter extends BaseAdapter {
     List<com.multiselect.UserModel> users;
     LayoutInflater inflater;
 
-    //short to create constructer using command+n for mac & Alt+Insert for window
-
-
     public CustomAdapter(Activity activity) {
         this.activity = activity;
     }
@@ -58,8 +55,8 @@ public class CustomAdapter extends BaseAdapter {
 
             holder = new ViewHolder();
 
-            holder.tvUserName = (TextView)view.findViewById(R.id.tv_user_name);
-            holder.ivCheckBox = (ImageView) view.findViewById(R.id.iv_check_box);
+            holder.One_mistake = (TextView)view.findViewById(R.id.Mistake);
+            holder.Check_Box = (ImageView) view.findViewById(R.id.checkbox);
 
             view.setTag(holder);
         }
@@ -68,13 +65,13 @@ public class CustomAdapter extends BaseAdapter {
         }
         com.multiselect.UserModel model = users.get(i);
 
-        holder.tvUserName.setText(model.getUserName());
+        holder.One_mistake.setText(model.getUserName());
 
         if (model.isSelected()) {
-            holder.ivCheckBox.setBackgroundResource(R.drawable.checked);
+            holder.Check_Box.setBackgroundResource(R.drawable.checked);
         }
         else {
-            holder.ivCheckBox.setBackgroundResource(R.drawable.check);
+            holder.Check_Box.setBackgroundResource(R.drawable.check);
         }
         return view;
 
@@ -88,8 +85,8 @@ public class CustomAdapter extends BaseAdapter {
 
     class ViewHolder{
 
-        TextView tvUserName;
-        ImageView ivCheckBox;
+        TextView One_mistake;
+        ImageView Check_Box;
 
     }
 }
