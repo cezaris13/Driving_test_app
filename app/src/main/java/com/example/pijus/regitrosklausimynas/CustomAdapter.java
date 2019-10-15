@@ -20,6 +20,8 @@ public class CustomAdapter extends BaseAdapter {
     LayoutInflater inflater;
 
     public CustomAdapter(Activity activity) {
+
+
         this.activity = activity;
     }
 

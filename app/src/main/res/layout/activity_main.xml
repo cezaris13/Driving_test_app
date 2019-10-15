@@ -7,7 +7,13 @@
     android:orientation="vertical"
 
     tools:context=".MainActivity">
-
+    <!--<ExpandableListView-->
+        <!--android:id="@+id/expandableListView"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft"-->
+        <!--android:divider="@android:color/darker_gray"-->
+        <!--android:dividerHeight="0.5dp" />-->
     <Spinner
         android:id="@+id/Spinerris"
         android:layout_width="match_parent"
@@ -18,12 +24,13 @@
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
         android:layout_weight="1"></ListView>
-    <Button
+    <Button style="@style/Widget.AppCompat.Button.Colored"
         android:id="@+id/Button1"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Issaugoti"
         android:layout_gravity="bottom"
+        android:backgroundTint="@color/colorPrimary"
         />
 
 
