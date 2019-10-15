@@ -1,9 +1,11 @@
 package com.example.pijus.regitrosklausimynas;
 import android.Manifest;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Environment;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -366,18 +368,31 @@ public class MainActivity extends AppCompatActivity {
         submit_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(Build.VERSION.SDK_INT> Build.VERSION_CODES.M){
-                    if(checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)==PackageManager.PERMISSION_DENIED){
-                        String[] permissions={Manifest.permission.WRITE_EXTERNAL_STORAGE};
-                        requestPermissions(permissions, STORAGE_CODE);
-                    }
-                    else{
-                        savePdf();
-                    }
-                }
-                else{
-                    savePdf();
-                }
+                    new AlertDialog.Builder(MainActivity.this)
+                            .setIcon(android.R.drawable.ic_input_get)
+                            .setTitle("Klaidų išsaugojimas")
+                            .setMessage("Ar jūs tikrai norite išsaugoti šiuos duomenis?")
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener()
+                            {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    if(Build.VERSION.SDK_INT> Build.VERSION_CODES.M){
+                                        if(checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)==PackageManager.PERMISSION_DENIED){
+                                            String[] permissions={Manifest.permission.WRITE_EXTERNAL_STORAGE};
+                                            requestPermissions(permissions, STORAGE_CODE);
+                                        }
+                                        else{
+                                            savePdf();
+                                        }
+                                    }
+                                    else{
+                                        savePdf();
+                                    }
+                                }
+
+                            })
+                            .setNegativeButton("No", null)
+                            .show();
             }
         });
     }

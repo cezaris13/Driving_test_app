@@ -21,7 +21,6 @@ public class CustomAdapter extends BaseAdapter {
 
     public CustomAdapter(Activity activity) {
 
-
         this.activity = activity;
     }
 
