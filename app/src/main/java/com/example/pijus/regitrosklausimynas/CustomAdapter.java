@@ -1,4 +1,4 @@
-package com.multiselect;
+package com.example.pijus.regitrosklausimynas;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
