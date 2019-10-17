@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
@@ -44,7 +45,10 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = layoutInflater.inflate(R.layout.list_item, null);
         }
-        TextView expandedListTextView = (TextView) convertView
+//        TextView expandedListTextView = (TextView) convertView
+//                .findViewById(R.id.expandedListItem);
+//        expandedListTextView.setText(expandedListText);
+        CheckBox expandedListTextView = (CheckBox) convertView
                 .findViewById(R.id.expandedListItem);
         expandedListTextView.setText(expandedListText);
         return convertView;
