@@ -12,11 +12,6 @@
     android:layout_height="50dp"
     android:spinnerMode="dropdown"></Spinner>
 
-    <TextView
-        android:id="@+id/zodziai"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="labas" />
     <ExpandableListView
         android:id="@+id/Expandable"
         android:layout_width="match_parent"

@@ -16,7 +16,7 @@ import java.util.List;
 public class CustomAdapter extends BaseAdapter {
 
     Activity activity;
-    List<UserModel> users;
+    List<One_mistake> users;
     LayoutInflater inflater;
 
     public CustomAdapter(Activity activity) {
@@ -24,7 +24,7 @@ public class CustomAdapter extends BaseAdapter {
         this.activity = activity;
     }
 
-    public CustomAdapter(Activity activity, List<UserModel> users) {
+    public CustomAdapter(Activity activity, List<One_mistake> users) {
         this.activity   = activity;
         this.users      = users;
         inflater        = activity.getLayoutInflater();
@@ -64,9 +64,9 @@ public class CustomAdapter extends BaseAdapter {
         else {
             holder = (ViewHolder) view.getTag();
         }
-        UserModel model = users.get(i);
+        One_mistake model = users.get(i);
 
-        holder.One_mistake.setText(model.getUserName());
+        holder.One_mistake.setText(model.getOne_Mistake());
 
         if (model.isSelected()) {
             holder.Check_Box.setBackgroundResource(R.drawable.checked);
@@ -78,7 +78,7 @@ public class CustomAdapter extends BaseAdapter {
 
     }
 
-    public void updateRecords(List<UserModel> users){
+    public void updateRecords(List<One_mistake> users){
         this.users = users;
 
         notifyDataSetChanged();

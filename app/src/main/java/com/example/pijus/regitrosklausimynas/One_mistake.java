@@ -1,17 +1,17 @@
 package com.example.pijus.regitrosklausimynas;
 
 
-public class UserModel {
+public class One_mistake {
     boolean isSelected;
-    String userName;
+    String One_Mistake;
     String True_val;
     String False_val;
 
-    public UserModel(boolean isSelected, String userName,String true_val,String false_val) {
+    public One_mistake(boolean isSelected, String mistake, String true_val, String false_val) {
         this.isSelected = isSelected;
-        this.userName = userName;
-        this.False_val=false_val;
-        this.True_val=true_val;
+        this.One_Mistake = mistake;
+        this.False_val = false_val;
+        this.True_val = true_val;
     }
 
     public boolean isSelected() {
@@ -22,12 +22,12 @@ public class UserModel {
         isSelected = selected;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getOne_Mistake() {
+        return One_Mistake;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setOne_Mistake(String one_Mistake) {
+        One_Mistake = one_Mistake;
     }
 
     public String getTrue_val() {
@@ -45,5 +45,4 @@ public class UserModel {
     public void setFalse_val(String false_val) {
         False_val = false_val;
     }
-
 }

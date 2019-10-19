@@ -16,10 +16,10 @@
 //
 //    private Context context;
 //    private List<String> expandableListTitle;
-//    private HashMap<String, List<com.multiselect.UserModel>> expandableListDetail;
+//    private HashMap<String, List<com.multiselect.One_mistake>> expandableListDetail;
 //
 //    public CustomExpandableListAdapter(Context context, List<String> expandableListTitle,
-//                                       HashMap<String, List<com.multiselect.UserModel>> expandableListDetail) {
+//                                       HashMap<String, List<com.multiselect.One_mistake>> expandableListDetail) {
 //        this.context = context;
 //        this.expandableListTitle = expandableListTitle;
 //        this.expandableListDetail = expandableListDetail;
@@ -122,10 +122,10 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
 
     private Context context;
     private List<String> expandableListTitle;
-    private HashMap<String, List<UserModel>> expandableListDetail;
+    private HashMap<String, List<One_mistake>> expandableListDetail;
 
     public CustomExpandableListAdapter(Context context, List<String> expandableListTitle,
-                                       HashMap<String, List<UserModel>> expandableListDetail) {
+                                       HashMap<String, List<One_mistake>> expandableListDetail) {
         this.context = context;
         this.expandableListTitle = expandableListTitle;
         this.expandableListDetail = expandableListDetail;
@@ -133,7 +133,7 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public Object getChild(int listPosition, int expandedListPosition) {
-        return this.expandableListDetail.get(this.expandableListTitle.get(listPosition)).get(expandedListPosition).getUserName();
+        return this.expandableListDetail.get(this.expandableListTitle.get(listPosition)).get(expandedListPosition).getOne_Mistake();
     }
 
     @Override
