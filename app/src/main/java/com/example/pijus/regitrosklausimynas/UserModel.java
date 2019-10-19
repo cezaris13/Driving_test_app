@@ -1,8 +1,7 @@
-package com.multiselect;
+package com.example.pijus.regitrosklausimynas;
 
 
 public class UserModel {
-
     boolean isSelected;
     String userName;
     String True_val;

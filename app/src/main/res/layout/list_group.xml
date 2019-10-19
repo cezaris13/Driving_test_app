@@ -3,12 +3,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <TextView
         android:id="@+id/listTitle"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:height="50dp"
+        android:minHeight="50dp"
+        android:paddingBottom="10dp"
         android:paddingLeft="?android:attr/expandableListPreferredItemPaddingLeft"
-        android:textColor="@android:color/black"
         android:paddingTop="10dp"
-        android:paddingBottom="10dp" />
+        android:textColor="@android:color/black"
+        android:textSize="20dp"
+        android:text="labas"/>
 </LinearLayout>

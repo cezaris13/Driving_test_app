@@ -10,11 +10,46 @@
         <!--android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"-->
         <!--android:paddingTop="10dp"-->
         <!--android:paddingBottom="10dp" />-->
-    <CheckBox
-        android:id="@+id/expandedListItem"
-        android:layout_width="fill_parent"
+    <!--<TextView-->
+        <!--android:id="@+id/expandedListItem"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"-->
+        <!--android:paddingTop="10dp"-->
+        <!--android:paddingBottom="10dp"/>-->
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"/>
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/expandedListItem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="50dp"
+                android:layout_marginLeft="15dp"
+                android:gravity="center_vertical|left"
+                android:textColor="@color/colorBlack"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:id="@+id/checkbox"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/check"/>
+        </LinearLayout>
+    </LinearLayout>
+
 </LinearLayout>

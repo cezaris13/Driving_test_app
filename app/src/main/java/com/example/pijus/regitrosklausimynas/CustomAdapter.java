@@ -16,7 +16,7 @@ import java.util.List;
 public class CustomAdapter extends BaseAdapter {
 
     Activity activity;
-    List<com.multiselect.UserModel> users;
+    List<UserModel> users;
     LayoutInflater inflater;
 
     public CustomAdapter(Activity activity) {
@@ -24,7 +24,7 @@ public class CustomAdapter extends BaseAdapter {
         this.activity = activity;
     }
 
-    public CustomAdapter(Activity activity, List<com.multiselect.UserModel> users) {
+    public CustomAdapter(Activity activity, List<UserModel> users) {
         this.activity   = activity;
         this.users      = users;
         inflater        = activity.getLayoutInflater();
@@ -64,7 +64,7 @@ public class CustomAdapter extends BaseAdapter {
         else {
             holder = (ViewHolder) view.getTag();
         }
-        com.multiselect.UserModel model = users.get(i);
+        UserModel model = users.get(i);
 
         holder.One_mistake.setText(model.getUserName());
 
@@ -78,7 +78,7 @@ public class CustomAdapter extends BaseAdapter {
 
     }
 
-    public void updateRecords(List<com.multiselect.UserModel> users){
+    public void updateRecords(List<UserModel> users){
         this.users = users;
 
         notifyDataSetChanged();
