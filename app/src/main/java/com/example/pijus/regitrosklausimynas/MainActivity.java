@@ -27,12 +27,14 @@ import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.Document;
 import java.io.FileOutputStream;
+import java.text.Normalizer;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -266,7 +268,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
             //add paragraph
-           mDoc.add(new Paragraph(Text_to_file));
+
+           mDoc.add(new Paragraph(deAccent(Text_to_file)));
 
 
             mDoc.close();
@@ -287,5 +290,11 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
+    }
+
+    public String deAccent(String str) {
+        String nfdNormalizedString = Normalizer.normalize(str, Normalizer.Form.NFD);
+        Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+        return pattern.matcher(nfdNormalizedString).replaceAll("");
     }
 }
