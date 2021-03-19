@@ -36,9 +36,9 @@ import java.util.List;
 import java.util.Locale;
 import java.util.regex.Pattern;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
 
-    private static  final int STORAGE_CODE=1000;
+    private static final int STORAGE_CODE=1000;
     Integer Position=0;
     Button submit_button;
     List<One_mistake> Mistakes = new ArrayList<>();
@@ -54,11 +54,9 @@ public class MainActivity extends AppCompatActivity {
     LinkedHashMap<String, List<One_mistake>> expandableListDetail;
     LinkedHashMap<String, List<One_mistake>> expandableListDetail_kk;
     LinkedHashMap<String, List<One_mistake>> expandableListDetail_bkk;
-    //public String Spinner_name;
     public int Spinner_id;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         expandableListView = (ExpandableListView) findViewById(R.id.Expandable);
@@ -72,67 +70,68 @@ public class MainActivity extends AppCompatActivity {
         expandableListAdapter_kk = new CustomExpandableListAdapter(this, expandableListTitle_kk,expandableListDetail_kk);
         expandableListAdapter_bkk = new CustomExpandableListAdapter(this, expandableListTitle_bkk,expandableListDetail_bkk);
         expandableListView.setAdapter(expandableListAdapter);
-        expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+        expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener(){
 
-            @Override
-            public void onGroupExpand(int groupPosition) {
-               // Toast.makeText(getApplicationContext(), expandableListTitle.get(groupPosition) + " List expanded.", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        expandableListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
-
-            @Override
-            public void onGroupCollapse(int groupPosition) {
-               // Toast.makeText(getApplicationContext(), expandableListTitle.get(groupPosition) + " List Collapsed.", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-            @Override
-            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-               if(Position==0){
-                   //Toast.makeText(getApplicationContext(),expandableListTitle.get(groupPosition) + " -> " + expandableListDetail.get(expandableListTitle.get(groupPosition)).get(childPosition).getOne_Mistake(), Toast.LENGTH_SHORT).show();
-                   if(expandableListDetail.get(expandableListTitle.get(groupPosition)).get(childPosition).isSelected==false) {
-                       expandableListDetail.get(expandableListTitle.get(groupPosition)).get(childPosition).isSelected = true;
-                       ImageView selected=(ImageView) v.findViewById(R.id.checkbox);
-                       selected.setBackgroundResource(R.drawable.checked);
-                   }
-                   else{
-                       expandableListDetail.get(expandableListTitle.get(groupPosition)).get(childPosition).isSelected=false;
-                       ImageView selected=(ImageView) v.findViewById(R.id.checkbox);
-                       selected.setBackgroundResource(R.drawable.check);
-                   }
-               }
-                if(Position==1){
-                    //Toast.makeText(getApplicationContext(),expandableListTitle_kk.get(groupPosition) + " -> " + expandableListDetail_kk.get(expandableListTitle_kk.get(groupPosition)).get(childPosition).getOne_Mistake(), Toast.LENGTH_SHORT).show();
-                    if(expandableListDetail_kk.get(expandableListTitle_kk.get(groupPosition)).get(childPosition).isSelected==false) {
-                        expandableListDetail_kk.get(expandableListTitle_kk.get(groupPosition)).get(childPosition).isSelected = true;
-                        ImageView selected=(ImageView) v.findViewById(R.id.checkbox);
-                        selected.setBackgroundResource(R.drawable.checked);
-                    }
-                    else{
-                        expandableListDetail_kk.get(expandableListTitle_kk.get(groupPosition)).get(childPosition).isSelected=false;
-                        ImageView selected=(ImageView) v.findViewById(R.id.checkbox);
-                        selected.setBackgroundResource(R.drawable.check);
-                    }
+                @Override
+                public void onGroupExpand(int groupPosition){
+                    // Toast.makeText(getApplicationContext(), expandableListTitle.get(groupPosition) + " List expanded.", Toast.LENGTH_SHORT).show();
                 }
-                if(Position==2){
-                    //Toast.makeText(getApplicationContext(),expandableListTitle_bkk.get(groupPosition) + " -> " + expandableListDetail_bkk.get(expandableListTitle_bkk.get(groupPosition)).get(childPosition).getOne_Mistake(), Toast.LENGTH_SHORT).show();
-                    if(expandableListDetail_bkk.get(expandableListTitle_bkk.get(groupPosition)).get(childPosition).isSelected==false) {
-                        expandableListDetail_bkk.get(expandableListTitle_bkk.get(groupPosition)).get(childPosition).isSelected = true;
-                        ImageView selected=(ImageView) v.findViewById(R.id.checkbox);
-                        selected.setBackgroundResource(R.drawable.checked);
-                    }
-                    else{
-                        expandableListDetail_bkk.get(expandableListTitle_bkk.get(groupPosition)).get(childPosition).isSelected=false;
-                        ImageView selected=(ImageView) v.findViewById(R.id.checkbox);
-                        selected.setBackgroundResource(R.drawable.check);
-                    }
+            });
+
+        expandableListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener(){
+
+                @Override
+                public void onGroupCollapse(int groupPosition){
+                    // Toast.makeText(getApplicationContext(), expandableListTitle.get(groupPosition) + " List Collapsed.", Toast.LENGTH_SHORT).show();
                 }
-               return false;
-            }
-        });
+            });
+
+        expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener(){
+                @Override
+                public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id){
+                    if(Position==0){
+                        //Toast.makeText(getApplicationContext(),expandableListTitle.get(groupPosition) + " -> " + expandableListDetail.get(expandableListTitle.get(groupPosition)).get(childPosition).getOne_Mistake(), Toast.LENGTH_SHORT).show();
+                        if(expandableListDetail.get(expandableListTitle.get(groupPosition)).get(childPosition).isSelected==false){
+                            expandableListDetail.get(expandableListTitle.get(groupPosition)).get(childPosition).isSelected = true;
+                            ImageView selected=(ImageView) v.findViewById(R.id.checkbox);
+                            selected.setBackgroundResource(R.drawable.checked);
+                        }
+                        else{
+                            expandableListDetail.get(expandableListTitle.get(groupPosition)).get(childPosition).isSelected=false;
+                            ImageView selected=(ImageView) v.findViewById(R.id.checkbox);
+                            selected.setBackgroundResource(R.drawable.check);
+                        }
+                    }
+
+                    if(Position==1){
+                        //Toast.makeText(getApplicationContext(),expandableListTitle_kk.get(groupPosition) + " -> " + expandableListDetail_kk.get(expandableListTitle_kk.get(groupPosition)).get(childPosition).getOne_Mistake(), Toast.LENGTH_SHORT).show();
+                        if(expandableListDetail_kk.get(expandableListTitle_kk.get(groupPosition)).get(childPosition).isSelected==false){
+                            expandableListDetail_kk.get(expandableListTitle_kk.get(groupPosition)).get(childPosition).isSelected = true;
+                            ImageView selected=(ImageView) v.findViewById(R.id.checkbox);
+                            selected.setBackgroundResource(R.drawable.checked);
+                        }
+                        else{
+                            expandableListDetail_kk.get(expandableListTitle_kk.get(groupPosition)).get(childPosition).isSelected=false;
+                            ImageView selected=(ImageView) v.findViewById(R.id.checkbox);
+                            selected.setBackgroundResource(R.drawable.check);
+                        }
+                    }
+                    if(Position==2){
+                        //Toast.makeText(getApplicationContext(),expandableListTitle_bkk.get(groupPosition) + " -> " + expandableListDetail_bkk.get(expandableListTitle_bkk.get(groupPosition)).get(childPosition).getOne_Mistake(), Toast.LENGTH_SHORT).show();
+                        if(expandableListDetail_bkk.get(expandableListTitle_bkk.get(groupPosition)).get(childPosition).isSelected==false){
+                            expandableListDetail_bkk.get(expandableListTitle_bkk.get(groupPosition)).get(childPosition).isSelected = true;
+                            ImageView selected=(ImageView) v.findViewById(R.id.checkbox);
+                            selected.setBackgroundResource(R.drawable.checked);
+                        }
+                        else{
+                            expandableListDetail_bkk.get(expandableListTitle_bkk.get(groupPosition)).get(childPosition).isSelected=false;
+                            ImageView selected=(ImageView) v.findViewById(R.id.checkbox);
+                            selected.setBackgroundResource(R.drawable.check);
+                        }
+                    }
+                    return false;
+                }
+            });
 
         Spinner DropDown=(Spinner) findViewById(R.id.Spinerris);
         ArrayList<String> arrayList = new ArrayList<>();
@@ -142,79 +141,79 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, arrayList);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         DropDown.setAdapter(arrayAdapter);
-        DropDown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Spinner_id=position;
-                Position=position;
-                if(Spinner_id==0){
-                    expandableListView.setAdapter(expandableListAdapter);
+        DropDown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id){
+                    Spinner_id=position;
+                    Position=position;
+                    if(Spinner_id==0){
+                        expandableListView.setAdapter(expandableListAdapter);
+                    }
+                    if(Spinner_id==1){
+                        expandableListView.setAdapter(expandableListAdapter_kk);
+                    }
+                    if(Spinner_id==2){
+                        expandableListView.setAdapter(expandableListAdapter_bkk);
+                    }
+                    //Spinner_name = parent.getItemAtPosition(position).toString();
+                    //Toast.makeText(parent.getContext(), "Selected: " + Spinner_name+" "+String.valueOf(Spinner_id), Toast.LENGTH_LONG).show();
                 }
-                if(Spinner_id==1){
-                    expandableListView.setAdapter(expandableListAdapter_kk);
+                @Override
+                public void onNothingSelected(AdapterView <?> parent){
                 }
-                if(Spinner_id==2) {
-                    expandableListView.setAdapter(expandableListAdapter_bkk);
-                }
-                //Spinner_name = parent.getItemAtPosition(position).toString();
-                //Toast.makeText(parent.getContext(), "Selected: " + Spinner_name+" "+String.valueOf(Spinner_id), Toast.LENGTH_LONG).show();
-            }
-            @Override
-            public void onNothingSelected(AdapterView <?> parent) {
-            }
-        });
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                if(Spinner_id==0) {
-//                    One_mistake Selected_mistake = Mistakes.get(i);
-//                    if (Selected_mistake.isSelected()) {
-//                        Selected_mistake.setSelected(false);
-//                    } else {
-//                        Selected_mistake.setSelected(true);
-//                    }
-//                    Mistakes.set(i, Selected_mistake);
-//                    //now update adapter
-//                    adapter.updateRecords(Mistakes);
-//                }
-//               else if(Spinner_id==1){
-//                    One_mistake Selected_mistake = KK_Mistakes.get(i);
-//                    if (Selected_mistake.isSelected()){
-//                        Selected_mistake.setSelected(false);
-//                    }
-//                    else {
-//                        Selected_mistake.setSelected(true);
-//                    }
-//                    KK_Mistakes.set(i, Selected_mistake);
-//                    //now update adapter
-//                    adapter1.updateRecords(KK_Mistakes);
-//                }
-//               else if(Spinner_id==2){
-//                    One_mistake Selected_mistake = BK_Mistakes.get(i);
-//                    if (Selected_mistake.isSelected()){
-//                        Selected_mistake.setSelected(false);
-//                    }
-//                    else {
-//                        Selected_mistake.setSelected(true);
-//                    }
-//                    BK_Mistakes.set(i, Selected_mistake);
-//                    //now update adapter
-//                    adapter2.updateRecords(BK_Mistakes);
-//                }
-//            }
-//        });
+            });
+        //        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+        //            @Override
+        //            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l){
+        //                if(Spinner_id==0){
+        //                    One_mistake Selected_mistake = Mistakes.get(i);
+        //                    if (Selected_mistake.isSelected()){
+        //                        Selected_mistake.setSelected(false);
+        //                    } else{
+        //                        Selected_mistake.setSelected(true);
+        //                    }
+        //                    Mistakes.set(i, Selected_mistake);
+        //                    //now update adapter
+        //                    adapter.updateRecords(Mistakes);
+        //                }
+        //               else if(Spinner_id==1){
+        //                    One_mistake Selected_mistake = KK_Mistakes.get(i);
+        //                    if (Selected_mistake.isSelected()){
+        //                        Selected_mistake.setSelected(false);
+        //                    }
+        //                    else{
+        //                        Selected_mistake.setSelected(true);
+        //                    }
+        //                    KK_Mistakes.set(i, Selected_mistake);
+        //                    //now update adapter
+        //                    adapter1.updateRecords(KK_Mistakes);
+        //                }
+        //               else if(Spinner_id==2){
+        //                    One_mistake Selected_mistake = BK_Mistakes.get(i);
+        //                    if (Selected_mistake.isSelected()){
+        //                        Selected_mistake.setSelected(false);
+        //                    }
+        //                    else{
+        //                        Selected_mistake.setSelected(true);
+        //                    }
+        //                    BK_Mistakes.set(i, Selected_mistake);
+        //                    //now update adapter
+        //                    adapter2.updateRecords(BK_Mistakes);
+        //                }
+        //            }
+        //        });
         submit_button=findViewById(R.id.Button1);
-        submit_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        submit_button.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
                     new AlertDialog.Builder(MainActivity.this)
-                            .setIcon(R.drawable.save1)
-                            .setTitle("Klaidų išsaugojimas")
-                            .setMessage("Ar jūs tikrai norite išsaugoti šiuos duomenis?")
-                            .setPositiveButton("Taip", new DialogInterface.OnClickListener()
+                        .setIcon(R.drawable.save1)
+                        .setTitle("Klaidų išsaugojimas")
+                        .setMessage("Ar jūs tikrai norite išsaugoti šiuos duomenis?")
+                        .setPositiveButton("Taip", new DialogInterface.OnClickListener()
                             {
                                 @Override
-                                public void onClick(DialogInterface dialog, int which) {
+                                public void onClick(DialogInterface dialog, int which){
                                     if(Build.VERSION.SDK_INT> Build.VERSION_CODES.M){
                                         if(checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)==PackageManager.PERMISSION_DENIED){
                                             String[] permissions={Manifest.permission.WRITE_EXTERNAL_STORAGE};
@@ -230,12 +229,12 @@ public class MainActivity extends AppCompatActivity {
                                 }
 
                             })
-                            .setNegativeButton("Ne", null)
-                            .show();
-            }
-        });
+                        .setNegativeButton("Ne", null)
+                        .show();
+                }
+            });
     }
-    private void savePdf() {
+    private void savePdf(){
         Document mDoc = new Document();
         String File_name = new SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(System.currentTimeMillis());
         String File_path = Environment.getExternalStorageDirectory() + "/" + File_name + ".pdf";
@@ -267,11 +266,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
-            //add paragraph
-
-           mDoc.add(new Paragraph(deAccent(Text_to_file)));
-
-
+            mDoc.add(new Paragraph(deAccent(Text_to_file)));
             mDoc.close();
             Toast.makeText(this,"Saved succesfully"+File_name+".pdf \n saved to "+File_path,Toast.LENGTH_SHORT).show();
         }
@@ -280,19 +275,18 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults){
         switch (requestCode){
-            case  STORAGE_CODE:{
-                if(grantResults.length >0&& grantResults[0]==PackageManager.PERMISSION_GRANTED){
-                }
-                else{
-                    Toast.makeText(this,"permission denied...!!!",Toast.LENGTH_SHORT).show();
-                }
+        case  STORAGE_CODE:{
+            if(grantResults.length >0&& grantResults[0]==PackageManager.PERMISSION_GRANTED){
+            }
+            else{
+                Toast.makeText(this,"permission denied...!!!",Toast.LENGTH_SHORT).show();
             }
         }
+        }
     }
-
-    public String deAccent(String str) {
+    public String deAccent(String str){
         String nfdNormalizedString = Normalizer.normalize(str, Normalizer.Form.NFD);
         Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
         return pattern.matcher(nfdNormalizedString).replaceAll("");
