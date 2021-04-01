@@ -9,65 +9,48 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.pijus.regitrosklausimynas.R;
-
 import java.util.List;
 
-
 public class CustomAdapter extends BaseAdapter {
-
     Activity activity;
-    List<One_mistake> users;
+    List<OneMistake> mistakes;
     LayoutInflater inflater;
 
     public CustomAdapter(Activity activity) {
-
-        this.activity = activity;
+        this.activity=activity;
     }
-
-    public CustomAdapter(Activity activity, List<One_mistake> users) {
-        this.activity   = activity;
-        this.users      = users;
-        inflater        = activity.getLayoutInflater();
+    public CustomAdapter(Activity activity, List<OneMistake> mistakes) {
+        this.activity=activity;
+        this.mistakes=mistakes;
+        inflater=activity.getLayoutInflater();
     }
-
     @Override
     public int getCount() {
-        return users.size();
+        return mistakes.size();
     }
-
     @Override
     public Object getItem(int i) {
         return i;
     }
-
     @Override
     public long getItemId(int i) {
         return i;
     }
-
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-
-        ViewHolder holder = null;
-
-        if (view == null){
-
-            view = inflater.inflate(R.layout.list_view_item, viewGroup, false);
-
-            holder = new ViewHolder();
-
-            holder.One_mistake = (TextView)view.findViewById(R.id.Mistake);
-            holder.Check_Box = (ImageView) view.findViewById(R.id.checkbox);
-
+        ViewHolder holder=null;
+        if (view==null){
+            view=inflater.inflate(R.layout.list_view_item, viewGroup, false);
+            holder=new ViewHolder();
+            holder.OneMistake=(TextView)view.findViewById(R.id.Mistake);
+            holder.Check_Box=(ImageView) view.findViewById(R.id.checkbox);
             view.setTag(holder);
         }
         else {
-            holder = (ViewHolder) view.getTag();
+            holder=(ViewHolder) view.getTag();
         }
-        One_mistake model = users.get(i);
-
-        holder.One_mistake.setText(model.getOne_Mistake());
-
+        OneMistake model=mistakes.get(i);
+        holder.OneMistake.setText(model.getOneMistake());
         if (model.isSelected()) {
             holder.Check_Box.setBackgroundResource(R.drawable.checked);
         }
@@ -75,19 +58,13 @@ public class CustomAdapter extends BaseAdapter {
             holder.Check_Box.setBackgroundResource(R.drawable.check);
         }
         return view;
-
     }
-
-    public void updateRecords(List<One_mistake> users){
-        this.users = users;
-
+    public void updateRecords(List<OneMistake> mistakes){
+        this.mistakes=mistakes;
         notifyDataSetChanged();
     }
-
     class ViewHolder{
-
-        TextView One_mistake;
+        TextView OneMistake;
         ImageView Check_Box;
-
     }
 }
