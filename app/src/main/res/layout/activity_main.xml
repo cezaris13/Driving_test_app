@@ -1,26 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
+
     <Spinner
-    android:id="@+id/Spinerris"
-    android:layout_width="match_parent"
-    android:layout_height="50dp"
-    android:spinnerMode="dropdown"></Spinner>
+        android:id="@+id/Spinerris"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:spinnerMode="dropdown"></Spinner>
 
     <ExpandableListView
         android:id="@+id/Expandable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1" />
-        <!--android:divider="@null"-->
-        <!--android:dividerHeight="0dp" />-->
-        <!--android:childDivider="@color/colorBlack"-->
-
 
     <Button
         android:id="@+id/Button1"
@@ -31,48 +27,3 @@
         android:backgroundTint="@color/colorPrimary"
         android:text="Issaugoti" />
 </LinearLayout>
-<!--<?xml version="1.0" encoding="utf-8"?>-->
-<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
-    <!--xmlns:tools="http://schemas.android.com/tools"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:orientation="vertical"-->
-
-    <!--tools:context=".MainActivity">-->
-
-    <!--&lt;!&ndash;<TextView&ndash;&gt;-->
-        <!--&lt;!&ndash;android:id="@+id/textas"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:text="labas" />&ndash;&gt;-->
-
-    <!--<ExpandableListView-->
-        <!--android:id="@+id/expandableListView"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft"-->
-        <!--android:divider="@android:color/darker_gray"-->
-        <!--android:dividerHeight="0.5dp" />-->
-    <!--<Spinner-->
-        <!--android:id="@+id/Spinerris"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="50dp"-->
-        <!--android:spinnerMode="dropdown"></Spinner>-->
-    <!--<ListView-->
-        <!--android:id="@+id/List_View"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="fill_parent"-->
-        <!--android:layout_weight="1"></ListView>-->
-    <!--<Button style="@style/Widget.AppCompat.Button.Colored"-->
-        <!--android:id="@+id/Button1"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="Issaugoti"-->
-        <!--android:layout_gravity="bottom"-->
-        <!--android:backgroundTint="@color/colorPrimary"-->
-        <!--/>-->
-
-
-<!--</LinearLayout>-->
-

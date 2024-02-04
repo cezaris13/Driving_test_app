@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "621688042806",
+    "project_id": "driving-test-app-master",
+    "storage_bucket": "driving-test-app-master.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:621688042806:android:26a2acf8c2aebb229eaf97",
+        "android_client_info": {
+          "package_name": "com.example.pijus.regitrosklausimynas"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOsPTS5SRv9n5BBoKcImGNGNsZIBnB2kw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
