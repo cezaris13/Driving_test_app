@@ -17,11 +17,19 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.example.pijus.regitrosklausimynas.ExpandableListDataPump.Companion.getMistakes
+import com.example.pijus.regitrosklausimynas.data.MistakeTypeGroup
 import com.example.pijus.regitrosklausimynas.data.OneMistake
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.GenericTypeIndicator
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import com.itextpdf.text.Document
 import com.itextpdf.text.Paragraph
 import com.itextpdf.text.pdf.PdfWriter
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 import java.io.FileOutputStream
 import java.text.Normalizer
 import java.text.SimpleDateFormat
@@ -35,9 +43,23 @@ class MainActivity : AppCompatActivity() {
     var expandableListAdapter = arrayOfNulls<ExpandableListAdapter>(3)
     private var expandableListTitle = ArrayList<List<String>>()
     private var expandableListDetail = ArrayList<LinkedHashMap<String, List<OneMistake>>>()
+
+    private suspend fun retrieveData(): ArrayList<MistakeTypeGroup>? {
+        val database = Firebase.database
+        val myRef = database.getReference("mistakes")
+        val dataSnapshot: DataSnapshot = myRef.get().await()
+        val t: GenericTypeIndicator<ArrayList<MistakeTypeGroup>?> =
+            object : GenericTypeIndicator<ArrayList<MistakeTypeGroup>?>() {}
+        return dataSnapshot.getValue(t)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        lifecycleScope.launch {
+            var response = retrieveData()
+        }
+//        print(response.toString())
         expandableListView = findViewById<View>(R.id.Expandable) as ExpandableListView
         for (i in 0..2) {
             expandableListDetail.add(LinkedHashMap(getMistakes(i)))
