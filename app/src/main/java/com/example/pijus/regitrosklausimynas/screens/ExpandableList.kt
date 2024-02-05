@@ -5,26 +5,28 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.pijus.regitrosklausimynas.data.SectionData
+import com.example.pijus.regitrosklausimynas.data.MistakeGroup
+import com.example.pijus.regitrosklausimynas.data.MistakeTypeGroup
 
 
 @Composable
-fun ExpandableList(sections: List<SectionData>) {
-    val isExpandedMap = List(sections.size) { _: Int -> false }.toMutableStateList()
-    val isSelected = MutableList(sections.size) { mutableListOf<Boolean>() }
-    sections.indices.forEach { index ->
-        isSelected[index] = List(sections[index].items.size) { false }.toMutableStateList()
+fun ExpandableList(mistakeTypeGroup: MistakeTypeGroup) {
+    val isExpandedMap = List(mistakeTypeGroup.groups.size) { _: Int -> false }.toMutableStateList()
+    val isSelected = MutableList(mistakeTypeGroup.groups.size) { mutableListOf<Boolean>() }
+    mistakeTypeGroup.groups.indices.forEach { index ->
+        isSelected[index] =
+            List(mistakeTypeGroup.groups[index].items.size) { false }.toMutableStateList()
     }
 
     LazyColumn {
-        sections.onEachIndexed { index, sectionData ->
+        mistakeTypeGroup.groups.onEachIndexed { index, sectionData ->
             val isExpanded = isExpandedMap[index]
             val onHeaderClick = {
                 isExpandedMap[index] = !isExpandedMap[index]
             }
             item {
                 sectionHeader(
-                    text = sectionData.headerText,
+                    text = sectionData.name,
                     isExpanded = isExpanded,
                     onHeaderClicked = onHeaderClick
                 )
@@ -32,7 +34,10 @@ fun ExpandableList(sections: List<SectionData>) {
 
             if (isExpanded) {
                 itemsIndexed(sectionData.items) { sectionIndex, item ->
-                    sectionItem(item, isSelected[index][sectionIndex])// does not save checkboxes, fix later
+                    sectionItem(
+                        item,
+                        isSelected[index][sectionIndex]
+                    )// does not save checkboxes, fix later
                 }
             }
         }
@@ -42,21 +47,15 @@ fun ExpandableList(sections: List<SectionData>) {
 @Composable
 @Preview(showBackground = true, backgroundColor = 0xFFFFFF)
 fun expandablePreview() {
-    val list = listOf(
-        SectionData(
-            "Section 1",
-            listOf(
-                "Section 1 item 1",
-                "Section 1 item 2"
-            )
-        ),
-        SectionData(
-            "Section 2",
-            listOf(
-                "Section 2 item 1",
-                "Section 2 item 2"
+    val mistakeTypeGroup = MistakeTypeGroup(
+        "Nekritinės klaidos", arrayListOf(
+            MistakeGroup(
+                "Parkavimas", arrayListOf(
+                    "first mistake",
+                    "second mistake"
+                )
             )
         )
     )
-    ExpandableList(list)
+    ExpandableList(mistakeTypeGroup)
 }

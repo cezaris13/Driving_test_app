@@ -22,8 +22,7 @@ import androidx.compose.ui.unit.dp
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DropdownMenu(items: Array<String>) {
-    val context = LocalContext.current
+fun DropdownMenu(items: List<String>, onClickAction: (String) -> Unit) {
     var expanded by remember { mutableStateOf(false) }
     var selectedText by remember { mutableStateOf(items[0]) }
 
@@ -53,10 +52,11 @@ fun DropdownMenu(items: Array<String>) {
                 items.forEach { item ->
                     DropdownMenuItem(
                         text = { Text(text = item) },
-                        onClick = {
+                        onClick =
+                        {
                             selectedText = item
                             expanded = false
-                            Toast.makeText(context, item, Toast.LENGTH_SHORT).show()
+                            onClickAction(item)
                         }
                     )
                 }
@@ -68,7 +68,11 @@ fun DropdownMenu(items: Array<String>) {
 
 @Preview
 @Composable
-fun dropDownMenuPreview(){
-    val coffeeDrinks = arrayOf("Americano", "Cappuccino", "Espresso", "Latte", "Mocha")
-    DropdownMenu(coffeeDrinks)
+fun dropDownMenuPreview() {
+    val context = LocalContext.current
+    val coffeeDrinks = listOf("Americano", "Cappuccino", "Espresso", "Latte", "Mocha")
+    val onClickAction = { item: String ->
+        Toast.makeText(context, item, Toast.LENGTH_SHORT).show()
+    }
+    DropdownMenu(coffeeDrinks, onClickAction)
 }
