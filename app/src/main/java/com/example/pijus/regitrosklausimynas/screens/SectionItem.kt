@@ -5,17 +5,16 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.pijus.regitrosklausimynas.theme.MyApplicationTheme
 
 @Composable
-fun sectionItem(text: String, isChecked: Boolean) {
-    var isItemChecked by remember { mutableStateOf(isChecked) }
+fun sectionItem(text: String, isChecked: MutableState<Boolean>) {
 
     Row(
         verticalAlignment = Alignment.CenterVertically,
@@ -23,8 +22,8 @@ fun sectionItem(text: String, isChecked: Boolean) {
             .fillMaxWidth()
     ) {
         Checkbox(
-            checked = isItemChecked,
-            onCheckedChange = { isItemChecked = it }
+            checked = isChecked.value,
+            onCheckedChange = { isChecked.value = it }
         )
         Text(text = text)
     }
@@ -35,6 +34,8 @@ fun sectionItem(text: String, isChecked: Boolean) {
 @Composable
 fun sectionItemPreview() {
     val text = "hello world"
-    val isChecked = true
-    sectionItem(text, isChecked)
+    val isChecked = remember { mutableStateOf(false) }
+    MyApplicationTheme {
+        sectionItem(text, isChecked)
+    }
 }

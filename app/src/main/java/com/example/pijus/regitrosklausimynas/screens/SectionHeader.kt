@@ -19,6 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.pijus.regitrosklausimynas.theme.MyApplicationTheme
 
 @Composable
 fun sectionHeader(text: String, isExpanded: Boolean, onHeaderClicked: () -> Unit) {
@@ -57,7 +58,9 @@ fun sectionHeaderPreview() {
     val text = "header"
     var isExpanded by remember {mutableStateOf(false)}
 
-    sectionHeader(text, isExpanded) {
-        isExpanded = !isExpanded
+    MyApplicationTheme {
+        sectionHeader(text, isExpanded) {
+            isExpanded = !isExpanded
+        }
     }
 }

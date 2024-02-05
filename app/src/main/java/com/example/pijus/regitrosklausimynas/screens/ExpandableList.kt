@@ -3,20 +3,22 @@ package com.example.pijus.regitrosklausimynas.screens
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.pijus.regitrosklausimynas.data.MistakeGroup
 import com.example.pijus.regitrosklausimynas.data.MistakeTypeGroup
+import com.example.pijus.regitrosklausimynas.theme.MyApplicationTheme
 
 
 @Composable
-fun ExpandableList(mistakeTypeGroup: MistakeTypeGroup) {
+fun ExpandableList(
+    mistakeTypeGroup: MistakeTypeGroup,
+    isSelected: MutableList<MutableList<MutableState<Boolean>>>
+) {
     val isExpandedMap = List(mistakeTypeGroup.groups.size) { _: Int -> false }.toMutableStateList()
-    val isSelected = MutableList(mistakeTypeGroup.groups.size) { mutableListOf<Boolean>() }
-    mistakeTypeGroup.groups.indices.forEach { index ->
-        isSelected[index] =
-            List(mistakeTypeGroup.groups[index].items.size) { false }.toMutableStateList()
-    }
 
     LazyColumn {
         mistakeTypeGroup.groups.onEachIndexed { index, sectionData ->
@@ -37,7 +39,7 @@ fun ExpandableList(mistakeTypeGroup: MistakeTypeGroup) {
                     sectionItem(
                         item,
                         isSelected[index][sectionIndex]
-                    )// does not save checkboxes, fix later
+                    )
                 }
             }
         }
@@ -57,5 +59,12 @@ fun expandablePreview() {
             )
         )
     )
-    ExpandableList(mistakeTypeGroup)
+
+    val isSelected = mistakeTypeGroup.groups.map {
+        MutableList(it.items.size) { remember { mutableStateOf(false) } }
+    }.toMutableList()
+
+    MyApplicationTheme {
+        ExpandableList(mistakeTypeGroup, isSelected)
+    }
 }
