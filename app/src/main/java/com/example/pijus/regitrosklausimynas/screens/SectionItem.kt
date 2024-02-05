@@ -15,7 +15,6 @@ import com.example.pijus.regitrosklausimynas.theme.MyApplicationTheme
 
 @Composable
 fun sectionItem(text: String, isChecked: MutableState<Boolean>) {
-
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
